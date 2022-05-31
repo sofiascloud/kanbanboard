@@ -1,0 +1,72 @@
+<!--------------------------------------------- update-task component -------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+
+<p style="text-align:center">Update Task!</p>
+<div class="taskcard">
+  <form class="example-form" [formGroup]="boardform">
+    <mat-form-field>
+      <input matInput placeholder="Task Id" formControlName="taskId" [ngModel]="prefillData.taskId" readonly>
+      <div *ngIf=" taskId.invalid" class="alert alert-danger">
+        <p>Please Enter Task Id</p>
+      </div>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <input matInput placeholder="Task Title" formControlName="taskTitle" [ngModel]="prefillData.taskTitle">
+      <div *ngIf=" taskTitle.invalid " class=" alert alert-danger">
+        <h5>Please Enter Task Title</h5>
+      </div>
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <input matInput placeholder="Task Descritption" formControlName="taskDesc" [ngModel]="prefillData.taskDesc">
+      <div *ngIf="taskDesc.invalid " class="alert alert-danger">
+        <h5>Please Enter Task Descritption</h5>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="Task Deadline"
+        formControlName="taskDeadline" [ngModel]="prefillData.taskDeadline">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input list="browsers" name="myBrowser" matInput placeholder="Priority" formControlName="priority"
+        [ngModel]="prefillData.priority">
+      <datalist id="browsers">
+        <option value="High">
+        <option value="Moderate">
+        <option value="Low">
+      </datalist>
+      <div *ngIf="priority.invalid " class="alert alert-danger">
+        <h5>Please Enter Assignee</h5>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Assignee" formControlName="assignee" [ngModel]="prefillData.assignee">
+      <div *ngIf="assignee.invalid " class="alert alert-danger">
+        <h5>Please Enter Assignee</h5>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input list="StatusList" name="mystatus" matInput placeholder="Status" formControlName="status"
+        [ngModel]="prefillData.status">
+      <datalist id="StatusList">
+        <option value="To Do">
+        <option value="In Progress">
+        <option value="Completed">
+      </datalist>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button id="update" mat-stroked-button type="submit" (click)=" task()" [disabled]="boardform.invalid"
+        style="font-size: large;">Update Task</button>
+      <!-- <button id="prefill" mat-stroked-button style="font-size: large;" (click)=" getTaskForPrefill()">Prefill
+        Form</button> -->
+    </div>
+  </form>
+</div>

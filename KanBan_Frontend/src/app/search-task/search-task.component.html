@@ -1,0 +1,41 @@
+<!--------------------------------------------- search-task component -------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+
+<br><br><br>
+<h1 class="example-card">
+  Searched Task :
+</h1>
+<button type="button" class="backbutton btn btn-primary" routerLink="/board">Back
+</button>
+<div class="board scroll">
+
+  <div class="container">
+
+    <div class="grid-container">
+      <div class="a" *ngFor="let obj of data; let i=index">
+        <mat-card class="grid-item" class="display-card">
+          <mat-card-title>{{obj.taskTitle}}</mat-card-title>
+          <mat-card-content>
+            <p>{{obj.taskDesc}}</p>
+            <p>{{obj.priority}}</p>
+            <p>{{obj.status}}</p>
+            <p>{{obj.taskDeadline | date: 'dd-MM-yyyy'}}</p>
+            <p>{{obj.assignee}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-icon-button *ngIf="obj.priority=='High'">
+              <mat-icon class="high">flag</mat-icon>
+            </button>
+            <button mat-icon-button *ngIf="obj.priority=='Moderate'">
+              <mat-icon class="medium">flag</mat-icon>
+            </button>
+            <button mat-icon-button *ngIf="obj.priority=='Low'">
+              <mat-icon class="low">flag</mat-icon>
+            </button>
+          </mat-card-actions>
+          
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

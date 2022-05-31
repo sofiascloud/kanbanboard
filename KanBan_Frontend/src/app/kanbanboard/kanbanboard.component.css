@@ -1,0 +1,138 @@
+.addandLog{
+  margin-top: 20px;;
+  margin-left:90px;
+}
+
+.profile{
+  position:relative;
+  left: 1240px;
+  top:5px;
+  border: solid rgb(240, 240, 240) .5px;
+  width: 13%;
+}
+/* alignment of emailid */
+.profileIcon{
+  position:relative;
+  top:5px;
+}
+
+
+.boardname{
+  color:black;
+  font-weight: bolder;
+  font-size:2em;
+  text-align: center;
+}
+.bordtitle{
+  margin-top: 20px;;
+  margin-left:100px;
+}
+.board{
+  display:flex;
+  margin-left:80px;
+  margin-right:40px;
+  padding:5px 10px;
+  width: 90%;
+  border:solid red 1px;
+  background-color:#feeeed; 
+  border-radius: 15px;
+  height:70vh;
+}
+
+
+.container{
+  /* margin:30px; */
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom:10px;
+  width:55%;
+ 
+}
+
+.example-card {
+  max-width: 85%;
+  margin-left: 20px;
+  /* border: solid rgb(189, 182, 179); */
+  border: solid rgb(175, 177, 177);
+
+  height: 50px;
+}
+.display-card{
+  position: relative;
+  max-width: 89%;
+  margin-left: 20px;
+  margin-top:10px;
+  border: solid rgb(189, 182, 179); 
+  
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+
+/*  for filling new task */
+.taskcard{
+  background-color: none;
+  color: black;
+  margin-top:55px;
+  margin-left:75px;
+  position: relative;
+  top: 0;
+  opacity: 1;
+  float: left;
+  padding: 1px;
+  width: 30%;
+  border-radius: 2px;
+  border:  grey;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  z-index: 5;
+  max-width: 330px;
+}
+
+.getbutton{
+  position: relative;
+  left:115rem;
+}
+.logoutbutton{
+  position: relative;
+  left:95rem;
+ 
+}
+.addIcon{
+  position: relative;
+  left: 11rem;
+}
+
+/* for scorllbar */
+.scroll{
+  height: 90%;
+  overflow-y: scroll;
+}
+#search{
+  position: relative;
+  left: 520px;
+  
+}
+.Bar{
+  width: 200px;
+}
+.search-button{
+  position: relative;
+  left: 520px;
+}
+
+/* flag */
+.high{
+  color: red;
+}
+.medium{
+  color:orange;
+}
+.low{
+  color:blue;
+}

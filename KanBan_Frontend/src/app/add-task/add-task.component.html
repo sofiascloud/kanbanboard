@@ -1,0 +1,68 @@
+
+<!--------------------------------------------- add-task component -------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<p>Add Task!</p>
+<div class="taskcard">
+  <form class="example-form" [formGroup]="boardform" (ngSubmit)="task()">
+    <mat-form-field>
+
+      <input matInput placeholder="Task Id" formControlName="taskId">
+      <div *ngIf="taskId.invalid && taskId.touched" class="alert alert-danger">
+        <h5>Please Enter Task Id</h5>
+      </div>
+    </mat-form-field>
+    <mat-form-field>
+
+      <input matInput placeholder="Task Title" formControlName="taskTitle">
+      <div *ngIf="taskTitle.invalid " class="alert alert-danger">
+        <h5>Please Enter Task Title</h5>
+      </div>
+    </mat-form-field>
+    <mat-form-field>
+
+      <input matInput placeholder="Task Descritption" formControlName="taskDesc">
+      <div *ngIf="taskDesc.invalid " class="alert alert-danger">
+        <h5>Please Enter Task Descritption</h5>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" [min]="minDate" placeholder="Task Deadline"
+        formControlName="taskDeadline">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input list="browsers" name="myBrowser" matInput placeholder="Priority" formControlName="priority">
+      <datalist id="browsers">
+        <option value="High">
+        <option value="Moderate">
+        <option value="Low">
+      </datalist>
+    </mat-form-field>
+    <mat-form-field>
+
+      <input matInput placeholder="Assignee" formControlName="assignee">
+      <div *ngIf="assignee.invalid " class="alert alert-danger">
+        <h5>Please Enter Assignee</h5>
+      </div>
+    </mat-form-field>
+    <mat-form-field>
+      <input list="StatusList" name="mystatus" matInput placeholder="Status" formControlName="status">
+      <datalist id="StatusList">
+        <option value="To Do">
+        <option value="In Progress">
+      </datalist>
+      <div *ngIf="status.invalid " class="alert alert-danger">
+        <h5>Please Enter Task Status</h5>
+      </div>
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-stroked-button type="submit" [disabled]="boardform.invalid" style="font-size: x-large;">Save
+        Task</button>
+    </div>
+  </form><br>
+</div>

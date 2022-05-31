@@ -1,0 +1,30 @@
+<!--------------------------------------------- Navigation Tool component -------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<mat-toolbar class="app-header" style="background-color:rgb(125, 231, 167) ;">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon style="color:whitesmoke" (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1 class="kanban">KANBAN BOARD</h1>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <!--mode is mentioend as "side" to remove the shadow feature-->
+  <mat-sidenav #drawer class="sidenav" #sidenav mode="side" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === true">
+
+    <mat-nav-list>
+      <a mat-list-item href="#" routerLink="home">Home Page</a>
+      <a mat-list-item href="#" routerLink="user-login">Login</a>
+      <a mat-list-item href="#" routerLink="register">Register</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>

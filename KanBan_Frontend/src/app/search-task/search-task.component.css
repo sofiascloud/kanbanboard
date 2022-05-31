@@ -1,0 +1,131 @@
+.backbutton{
+  margin-left:130rem;
+  margin-bottom: 10px;
+}
+
+.boardname{
+    color:black;
+    font-weight: bolder;
+    font-size:2em;
+    text-align: center;
+  }
+  .bordtitle{
+    margin-top: 20px;;
+    margin-left:100px;
+  }
+  .board{
+    display:flex;
+  margin-left:80px;
+  margin-right:40px;
+  padding:5px 10px;
+  width: 180vh;
+  border:solid red 1px;
+  background-color:#feeeed; 
+  border-radius: 15px;
+  height:80vh;
+  
+ 
+    
+  }
+  
+  .container{
+    /* margin:30px; */
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom:10px;
+    width:100%;
+  }
+  
+  .example-card {
+    font-size: xx-large;
+    font-weight: bold;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    left: 80px;
+    width: 70%
+  }
+  .display-card{
+    position: relative;
+    max-width: 70%;
+    margin-left: 10px;
+    margin-top:10px; 
+    
+  }
+  
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  
+  
+  
+  
+  /*  for filling new task */
+  .taskcard{
+    background-color: none;
+    color: black;
+    margin-top:55px;
+    margin-left:75px;
+    position: relative;
+    top: 0;
+    opacity: 1;
+    float: left;
+    padding: 1px;
+    width: 30%;
+    border-radius: 2px;
+    border:  grey;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    z-index: 5;
+    max-width: 330px;
+  }
+  
+  .getbutton{
+    position: relative;
+    left:144rem;
+  }
+  .addIcon{
+    position: relative;
+    left: 13rem;
+  }
+  .high{
+    color: red;
+  }
+  .medium{
+    color:orange;
+  }
+  .low{
+    color:blue;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    /* background-color: #2196F3; */
+    padding: 10px;
+    position: relative;
+    left: 50px;
+  }
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+  /* #title{
+    text-align: center;
+    position: relative;
+    left: 50px;
+  } */
+  .scroll{
+    height: 75%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar{
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }

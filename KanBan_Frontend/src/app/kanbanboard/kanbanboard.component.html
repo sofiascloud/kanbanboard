@@ -1,0 +1,156 @@
+<!--------------------------------------------- Kanban Board component -------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+<h3 class="profile">
+  <!-- Using material Icon perm_identity-->
+  <mat-icon class="profileIcon">perm_identity</mat-icon>{{emailId}}
+</h3>
+<!-- div of addtask , search task and logout -->
+<div class="addandLog">
+  <button type="button" class="addbutton btn btn-success" (click)="openDialogSave()">Add Task</button>
+  <!-- search bar -->
+  <mat-form-field id="search">
+    <input matInput class="Bar" placeholder="search by priority, title, status" name="searchBar" [(ngModel)]="searchBy">
+  </mat-form-field>
+  <button class="search-button" mat-button (click)="searchTask()">
+    <mat-icon>search</mat-icon>
+  </button>
+  <!-- Logout button -->
+  <button type="button" class=" logoutbutton btn btn-danger" routerLink="/user-login">Logout</button>
+</div>
+<br><br>
+<div class="board">
+
+  <!----- todo------>
+  <div class="container">
+    <mat-card class="example-card" style="background-color:rgb(231, 55, 55)">
+      <mat-card-title style="color:white; text-align: center;">To do
+      </mat-card-title>
+    </mat-card>
+    <!--to drag the a task to from todo to other list -->
+    <div class="scroll" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todoItems" id="To Do"
+      [cdkDropListConnectedTo]="[inProgressList, completeList]" (cdkDropListDropped)="drop($event)">
+      <!-- To display To do task  -->
+      <div cdkDrag *ngFor="let obj of todoItems; let i=index">
+        <div>
+          <!-- {{todoItems.length}} -->
+          <mat-card class="display-card">
+            <mat-card-title>{{obj.taskTitle}}</mat-card-title>
+            <mat-card-content>
+              <hr style="border:.5px solid rgb(185, 177, 177)">
+              <p>Description: {{obj.taskDesc}}</p>
+              <p>DeadLine: {{obj.taskDeadline | date: 'dd-MM-yyyy'}}</p>
+              <p>Priority: {{obj.priority}}</p>
+              <p>Assignee: {{obj.assignee}}</p>
+              <p>Status: {{obj.status}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button (click)="openDialogUpdate(obj.taskId)">
+                <mat-icon>update</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteTask(obj)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <!-- flag -->
+              <button mat-icon-button *ngIf="obj.priority=='High'">
+                <mat-icon class="high">flag</mat-icon>
+              </button>
+              <button mat-icon-button *ngIf="obj.priority=='Moderate'">
+                <mat-icon class="medium">flag</mat-icon>
+              </button>
+              <button mat-icon-button *ngIf="obj.priority=='Low'">
+                <mat-icon class="low">flag</mat-icon>
+              </button>
+            </mat-card-actions>
+            <div class="color" style="background-color:rgb(250, 2, 2) ; padding: 1px;"> </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--In-progress-->
+
+  <div class="container">
+    <mat-card class="example-card" style="background-color:rgb(44, 99, 177)">
+      <mat-card-header>
+        <mat-card-title style="color:white; text-align: center; margin-left: 95px;">In-Progress
+        </mat-card-title>
+      </mat-card-header>
+    </mat-card>
+    <!--to drag the a inprogress to from todoother list -->
+    <div class="scroll" cdkDropList #inProgressList="cdkDropList" [cdkDropListData]=inProgressItems id="In Progress"
+      [cdkDropListConnectedTo]="[todoList, completeList]" (cdkDropListDropped)="drop($event)">
+      <!-- To display In Progress task  -->
+      <div cdkDrag *ngFor="let obj of inProgressItems; let i=index">
+        <div *ngIf="i<15">
+          <mat-card class="display-card">
+            <mat-card-title>{{obj.taskTitle}}</mat-card-title>
+            <mat-card-content>
+              <hr style="border:.5px solid rgb(185, 177, 177)">
+              <p>Description: {{obj.taskDesc}}</p>
+              <p>DeadLine: {{obj.taskDeadline | date: 'dd-MM-yyyy'}}</p>
+              <p>Priority: {{obj.priority}}</p>
+              <p>Assignee: {{obj.assignee}}</p>
+              <p>Status: {{obj.status}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button (click)="openDialogUpdate(obj.taskId)">
+                <mat-icon>update</mat-icon>
+              </button>
+              <!-- <button mat-icon-button ><mat-icon>flag</mat-icon></button> -->
+              <button mat-icon-button (click)="deleteTask(obj)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <!-- flag -->
+              <button mat-icon-button *ngIf="obj.priority=='High'">
+                <mat-icon class="high">flag</mat-icon>
+              </button>
+              <button mat-icon-button *ngIf="obj.priority=='Moderate'">
+                <mat-icon class="medium">flag</mat-icon>
+              </button>
+              <button mat-icon-button *ngIf="obj.priority=='Low'">
+                <mat-icon class="low">flag</mat-icon>
+              </button>
+            </mat-card-actions>
+            <div class="color" style="background-color:rgb(11, 11, 204) ; padding: 1px;"> </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Completed-->
+  <div class="container">
+    <mat-card class="example-card" style="background-color:rgb(90, 185, 59)">
+      <mat-card-header>
+        <mat-card-title style="color:white; text-align: center; margin-left: 95px; ">Completed
+        </mat-card-title>
+      </mat-card-header>
+    </mat-card>
+
+    <!--to receive the dragged cards from other list -->
+    <div class="scroll" cdkDropList #completeList="cdkDropList" [cdkDropListData]=completedItems id="Completed"
+      [cdkDropListConnectedTo]="[todoList, inProgressList]" (cdkDropListDropped)="drop($event)">
+      <!-- To display Completed task  -->
+      <div *ngFor="let obj of completedItems">
+        <mat-card class="display-card">
+          <mat-card-title>{{obj.taskTitle}}</mat-card-title>
+          <mat-card-content>
+            <hr style="border:.5px solid rgb(185, 177, 177)">
+            <p>Description: {{obj.taskDesc}}</p>
+            <p>DeadLine: {{obj.taskDeadline | date: 'dd-MM-yyyy'}}</p>
+            <p>Priority: {{obj.priority}}</p>
+            <p>Assignee: {{obj.assignee}}</p>
+            <p>Status: {{obj.status}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-icon-button (click)="deleteTask(obj)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+          <div class="color" style="background-color:rgb(1, 255, 1) ; padding: 1px;"> </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

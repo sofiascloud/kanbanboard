@@ -1,0 +1,52 @@
+<!--------------------------------------------- user-login component -------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+
+<br>
+<mat-grid-list cols="2" rowHeight="700px">
+  <mat-grid-tile>
+    <div class="register-wrapper" fxLayout="row" fxLayoutAlign="center center">
+      <mat-card class="box">
+        <mat-card-header>
+          <mat-card-title>Log in</mat-card-title>
+        </mat-card-header>
+        <form class="example-form" [formGroup]="loginform" (ngSubmit)="login()">
+          <mat-card-content>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="User Id" formControlName="userId">
+              <div *ngIf="userId.invalid && userId.touched" class="alert alert-danger">
+                <h5>Please Enter User Id</h5>
+              </div>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email Id" formControlName="emailId">
+              <div *ngIf="emailId.invalid && emailId.touched" class="alert alert-danger">
+                <h5>Please Enter Right Fomat of Email Id</h5>
+              </div>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput [type]="showPassword ? 'text' : 'password'" name="password" formControlName="password"
+                placeholder="Password*">
+              <mat-icon matSuffix (click)="togglePasswordVisibility()">visibility</mat-icon>
+              <div *ngIf="password.invalid && password.touched" class="alert alert-danger">
+                Enter Minimum eight characters, at least one uppercase letter,
+                one lowercase letter, one number and one special character
+              </div>
+            </mat-form-field>
+          </mat-card-content>
+          <button mat-stroked-button type="submit" [disabled]="loginform.invalid"
+            style="background: linear-gradient(rgb(202, 221, 234)); font-size: x-large; color:black">Log in</button>
+        </form>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <div class="container">
+      <img src="assets\login1.png" alt="kanban board picture" width="650px" height="500px"><br><br>
+      <div class="text-block">
+        <!-- <h1 class="nameabovepic">Kanban Board</h1>  -->
+      </div>
+    </div>
+  </mat-grid-tile>
+
+</mat-grid-list>

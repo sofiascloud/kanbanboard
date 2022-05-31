@@ -1,0 +1,51 @@
+.btn-block{
+    color:black
+}
+.first-example , .second-example, .third-example{
+    margin-bottom: 10px;
+  }
+  body {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  
+  input {
+    width: 250px;
+    padding: 15px 12px;
+    font-size:22px;
+  }
+  .fa{
+    color:white;
+    font-size:27px;
+    margin-left:8px;
+  }
+
+  h1{
+    font-size:50px; 
+    font-weight:900 ;
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+   
+}
+
+img {
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+
+/* For the container holding the image and the text */
+.container {
+  position: relative;
+}
+
+/* for the text above the image */
+.text-block {
+  position: absolute;
+  bottom: 25px;
+  right: 180px;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}

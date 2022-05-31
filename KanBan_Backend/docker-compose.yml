@@ -1,0 +1,80 @@
+version: "3.3"
+
+services:
+  kanbanservice:
+    image: kanaban_image
+    container_name: kanban_container
+    build: KanBanBoardCrudOperation/
+    restart: always
+    network_mode: host
+    ports:
+      - 9898:9898
+    depends_on:
+      - mongoservice
+      - eurekaservice
+      - messagingservice
+
+  mongoservice:
+    image: mongo:3.4-jessie
+    container_name: mongo_container
+    network_mode: host
+    ports:
+      - 27017:27017
+
+
+  authservice:
+    image: auth_image
+    container_name: auth_container
+    build: kanban_user_authentication/
+    restart: always
+    network_mode: host
+    ports:
+      - 8888:8888
+    depends_on:
+      - mysqlservice
+      - eurekaservice
+      - messagingservice
+
+  messagingservice:
+    image: motification_image
+    container_name: notfication_container
+    build: MessagingService/
+    restart: always
+    network_mode: host
+    ports:
+      - 7878:7878
+    depends_on:
+      - eurekaservice
+
+
+  mysqlservice:
+    image: mysql:5.5
+    container_name: mysql_container
+    network_mode: host
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USERNAME: user
+      MYSQL_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  apiservice:
+    image: api_img
+    container_name: api_container
+    build: APIGateway/
+    network_mode: host
+    ports:
+      - 5555:5555
+    depends_on:
+      - eurekaservice
+
+  eurekaservice:
+    image: eureka_image
+    container_name: eureka_container
+    build: discoveryapplication/
+    network_mode: host
+    ports:
+      - 8761:8761
+
+
